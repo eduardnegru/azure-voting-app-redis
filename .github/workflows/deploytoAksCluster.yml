@@ -14,8 +14,8 @@ jobs:
     - name: Build and push image to ACR
       id: build-image
       run: |
-        docker build "$GITHUB_WORKSPACE/azure-vote" -f  "azure-vote/Dockerfile" -t aksregistryanegru.azurecr.io/aksanegru:${{ github.sha }} --label dockerfile-path=azure-vote/Dockerfile
-        docker push aksregistryanegru.azurecr.io/aksanegru:${{ github.sha }}
+        docker build "$GITHUB_WORKSPACE/azure-vote" -f  "azure-vote/Dockerfile" -t aksregistryanegru.azurecr.io/azure-vote-front:v4 --label dockerfile-path=azure-vote/Dockerfile
+        docker push aksregistryanegru.azurecr.io/azure-vote-front:v4
     
     - uses: azure/k8s-set-context@v1
       with:
@@ -45,6 +45,6 @@ jobs:
           manifests/deployment.yml
           manifests/service.yml
         images: |
-          aksregistryanegru.azurecr.io/aksanegru:${{ github.sha }}
+          aksregistryanegru.azurecr.io/azure-vote-front:v4
         imagepullsecrets: |
           aksanegrudockerauth
