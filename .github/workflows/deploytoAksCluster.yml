@@ -42,8 +42,7 @@ jobs:
       with:
         namespace: aks-anegrub21a
         manifests: |
-          manifests/deployment.yml
-          manifests/service.yml
+          manifests/azure-vote-all-in-one-redis.yaml
         images: |
           aksregistryanegru.azurecr.io/azure-vote-front:v4
         imagepullsecrets: |
