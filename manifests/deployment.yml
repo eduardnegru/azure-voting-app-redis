@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "aksanegru-1173"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "aksanegru-1173"
+  template:
+    metadata:
+      labels:
+        app: "aksanegru-1173"
+    spec:
+      containers:
+        - name: "aksanegru-1173"
+          image: "aksregistryanegru.azurecr.io/aksanegru"
+          ports:
+          - containerPort: 80
